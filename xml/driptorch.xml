@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<!--
+    XML do "Pingafogo", seguindo a estrutura REAL de handTool confirmada
+    a partir do xp550.xml (motosserra Husqvarna) do jogo base.
+
+    Modelo próprio (Driptorch.i3d) em uso, com i3dMappings confirmados
+    contra a Scenegraph real no GIANTS Editor (graphics/cutNode/
+    firstPersonNode/handNode). holderNode ainda não existe no modelo -
+    bloco <storable> comentado até criarmos esse nó.
+-->
+<handTool type="driptorchType"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="../../../../shared/xml/schema/handTool.xsd">
+
+    <annotation>Mod de teste - Pingafogo</annotation>
+
+    <storeData>
+        <name>Pingafogo</name>
+        <functions>
+            <function>$l10n_function_driptorch</function>
+        </functions>
+        <image>store_driptorch.dds</image>
+        <price>350</price>
+        <lifetime>600</lifetime>
+        <rotation>0</rotation>
+        <brand>LIZARD</brand>
+        <category>chainsaws</category> <!-- reaproveitando a mesma categoria da loja por enquanto -->
+        <species>HANDTOOL</species>
+        <storeIconRendering>
+            <settings cameraXRot="-20" cameraYRot="40"/>
+        </storeIconRendering>
+    </storeData>
+
+    <base mass="3.0" canCrouch="true" runMultiplier="0">
+        <typeDesc>$l10n_typeDesc_driptorch</typeDesc>
+        <!-- Modelo próprio - Driptorch.i3d fica na raiz da pasta do mod -->
+        <filename>Driptorch.i3d</filename>
+        <graphics node="graphics"/>
+        <handNode node="handNode" useLeftHand="false"/>
+        <firstPersonNode node="firstPersonNode"/>
+    </base>
+
+    <!--
+        Bloco exigido pela especialização Motorized, herdada junto com
+        parent="chainsaw" (sem ele, a leitura do nó de vibração vinha nula e
+        travava o jogo a cada update). Zerado porque o balanço/oscilação da
+        tocha agora é feito pelo nosso próprio script (DriptorchTool.lua),
+        não pela vibração de motor (que é pensada pra RPM, não pra isso).
+    -->
+    <!--
+        COMENTADO: esse bloco só era necessário porque parent="chainsaw"
+        herdava a especialização Motorized (sem ele, a leitura do nó de
+        vibração vinha nula e travava o jogo). Agora que removemos
+        parent="chainsaw" do modDesc.xml (testando se era a causa da
+        invisibilidade), Motorized não é mais herdado - esse bloco não é
+        lido por ninguém. Deixado aqui comentado só de referência; pode
+        apagar de vez se o teste sem chainsaw funcionar bem.
+
+    <motorized>
+        <vibrations amount="0 0 0" node="graphics"/>
+    </motorized>
+    -->
+
+    <storable>
+        <holderType type="CHAINSAW" node="holderNode"/>
+    </storable>
+
+    <!--
+        Bloco da NOSSA especialização customizada (definida em
+        scripts/DriptorchTool.lua e registrada em modDesc.xml).
+    -->
+    <!--
+        IMPORTANTE: XMLValueType.TIME espera o valor em SEGUNDOS aqui no XML
+        (o motor converte pra milissegundos internamente ao ler via
+        getValue). Confirmado por bug real: "750" virou 750.000ms (12,5 min)
+        em vez de 750ms. Por isso os valores abaixo estão em segundos.
+    -->
+    <driptorchTool range="2.2" activationHoldTime="0.75">
+        <!-- Valores de teste (1 segundo pra cada) - trocar pelos finais
+             (5/3/2 segundos) depois de confirmar que a mecânica funciona.
+             Servem de FALLBACK quando não for possível ler a altura da
+             árvore (ver heightFactor abaixo).
+
+             heightFactor: segundos de queima POR METRO de altura da árvore.
+             duration = altura(m) * heightFactor * speedMultiplier.
+             Calibrado em 1.1 (árvore de 10m -> 11s de base) depois de
+             confirmar a leitura de altura real via getRigidBodyAABB.
+
+             speedMultiplier: knob simples pra deixar tudo mais rápido/devagar
+             sem mexer nos outros números. 2.0 deixava uma árvore de 10m em
+             ~20s - devagar demais pro ritmo do jogo. Reduzido pra 1.1
+             (10m -> ~12.1s de queima total). -->
+        <burnDurations liveTree="1" deadTree="1" stump="1" heightFactor="1.1" speedMultiplier="1.1" />
+
+        <!-- Chama nasce na ponta onde ficaria a corrente da motosserra -->
+        <flameEffectNode node="cutNode"/>
+
+        <!--
+            Som de queima em loop, tocando enquanto o item estiver na mão.
+            TODO CONFIRMAR: node="cutNode" reaproveita o mesmo ponto da chama
+            (faz sentido o som "sair" de onde o fogo sai); loops="0" = repete
+            infinitamente enquanto ativo.
+        -->
+        <sounds>
+            <burning file="sounds/burning.ogg" node="cutNode" loops="0" volume="1.0" linearFadeIn="0.2" linearFadeOut="0.3" />
+            <!-- Toca uma única vez ao pegar o item (loops="1" = sem repetir) -->
+            <ignite file="sounds/ignite.ogg" node="cutNode" loops="1" volume="1.0" />
+        </sounds>
+    </driptorchTool>
+
+    <!--
+        i3dMappings pro teste com Driptorch (malha limpa, sem o bug de
+        visibilidade do exportador que o Corpo tem) - 4 nós, mesma ordem
+        confirmada no IndexPath do exportador.
+    -->
+    <i3dMappings>
+        <i3dMapping id="graphics"        node="0>0" />
+        <i3dMapping id="cutNode"         node="0>1" />
+        <i3dMapping id="firstPersonNode" node="0>2" />
+        <i3dMapping id="handNode"        node="0>3" />
+        <i3dMapping id="holderNode"      node="0>4" />
+    </i3dMappings>
+</handTool>

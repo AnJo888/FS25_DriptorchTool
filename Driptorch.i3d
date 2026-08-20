@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<i3D name="Driptorch.i3d" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
+  <Asset>
+    <Export program="GIANTS Editor 64bit" version="10.0.13"/>
+  </Asset>
+
+  <Files>
+    <File fileId="3" filename="$data/shaders/vehicleShader.xml"/>
+    <File fileId="6" filename="$data/shared/detailLibrary/calibrated/calibratedPaint_diffuse.png"/>
+    <File fileId="5" filename="$data/shared/detailLibrary/calibrated/calibratedPaint_normal.png"/>
+    <File fileId="4" filename="$data/shared/detailLibrary/calibrated/calibratedPaint_specular.png"/>
+    <File fileId="14" filename="$data/shared/detailLibrary/flat_normal.png"/>
+    <File fileId="15" filename="$data/shared/detailLibrary/metallic/clear_diffuse.png"/>
+    <File fileId="13" filename="$data/shared/detailLibrary/metallic/clear_specular.png"/>
+    <File fileId="19" filename="$data/shared/detailLibrary/metallic/scratched_diffuse.png"/>
+    <File fileId="18" filename="$data/shared/detailLibrary/metallic/scratched_specular.png"/>
+    <File fileId="22" filename="$data/shared/detailLibrary/nonMetallic/metal/metalPaintedGraphite_diffuse.png"/>
+    <File fileId="21" filename="$data/shared/detailLibrary/nonMetallic/metal/metalPaintedGraphite_specular.png"/>
+    <File fileId="25" filename="$data/shared/detailLibrary/nonMetallic/rubber/rubberBlack_diffuse.png"/>
+    <File fileId="24" filename="$data/shared/detailLibrary/nonMetallic/rubber/rubber_normal.png"/>
+    <File fileId="23" filename="$data/shared/detailLibrary/nonMetallic/rubber/rubber_specular.png"/>
+  </Files>
+
+
+  <Materials>
+    <Material name="MatBico" materialId="5" diffuseColor="0.0627451 0.0627451 0.0627451 1" specularColor="0.501961 1 1" customShaderId="3">
+      <Custommap name="detailSpecular" fileId="21"/>
+      <Custommap name="detailNormal" fileId="14"/>
+      <Custommap name="detailDiffuse" fileId="22"/>
+    </Material>
+    <Material name="MatCabo" materialId="6" specularColor="0.501961 1 0" customShaderId="3">
+      <Custommap name="detailSpecular" fileId="23"/>
+      <Custommap name="detailNormal" fileId="24"/>
+      <Custommap name="detailDiffuse" fileId="25"/>
+      <CustomParameter name="porosity" value="0.5"/>
+    </Material>
+    <Material name="MatCanula" materialId="7" diffuseColor="0.8 0.8 0.8 1" specularColor="0.901961 1 1" customShaderId="3">
+      <Custommap name="detailSpecular" fileId="13"/>
+      <Custommap name="detailNormal" fileId="14"/>
+      <Custommap name="detailDiffuse" fileId="15"/>
+    </Material>
+    <Material name="MatCorpo" materialId="8" diffuseColor="0.00392157 0 0.243137 1" specularColor="0.501961 1 0" customShaderId="3">
+      <Custommap name="detailSpecular" fileId="4"/>
+      <Custommap name="detailNormal" fileId="5"/>
+      <Custommap name="detailDiffuse" fileId="6"/>
+      <CustomParameter name="colorScale" value="0.0658 0.139 0.3297"/>
+      <CustomParameter name="smoothnessScale" value="0.85"/>
+      <CustomParameter name="clearCoatIntensity" value="0.1"/>
+      <CustomParameter name="clearCoatSmoothness" value="0.2"/>
+    </Material>
+    <Material name="MatFlange" materialId="9" diffuseColor="0.8 0.52549 0.0313726 1" specularColor="0.501961 1 1" customShaderId="3">
+      <Custommap name="detailSpecular" fileId="18"/>
+      <Custommap name="detailNormal" fileId="14"/>
+      <Custommap name="detailDiffuse" fileId="19"/>
+      <CustomParameter name="colorScale" value="0.9647 0.7913 0.3095"/>
+    </Material>
+    <Material name="MatLetras" materialId="10" diffuseColor="0.8 0.8 0.8 1" specularColor="0.501961 1 0">
+    </Material>
+  </Materials>
+
+
+  <Shapes externalShapesFile="Driptorch.i3d.shapes">
+  </Shapes>
+
+  <Scene>
+    <TransformGroup name="Driptorch_root" translation="0 0.393858 0" nodeId="13">
+      <TransformGroup name="graphics" translation="-4.68045e-05 0.000819445 -0.000270724" nodeId="14">
+        <Shape name="Corpo" translation="-0.03 -0.0894628 -0.521243" rotation="-1.7 -0 0" shapeId="1" clipDistance="100" nodeId="15" castsShadows="true" receiveShadows="true" materialIds="8,7,9,5,6,10"/>
+      </TransformGroup>
+      <TransformGroup name="cutNode" translation="-0.0527497 -0.0818931 -0.749389" nodeId="16"/>
+      <TransformGroup name="firstPersonNode" translation="0.5 0.084 -0.07" rotation="210 10 90" nodeId="17"/>
+      <TransformGroup name="handNode" translation="0.137 -0.0888859 -0.352382" nodeId="18"/>
+      <TransformGroup name="holderNode" translation="-0.0469033 -0.0875064 -0.283354" rotation="-90 0 90" nodeId="19"/>
+    </TransformGroup>
+  </Scene>
+
+</i3D>

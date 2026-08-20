@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<modDesc descVersion="111">
+    <author>AnJo888</author>
+    <version>1.0.0.0</version>
+
+    <title>
+        <en><![CDATA[Nero Driptorch]]></en>
+        <de><![CDATA[Nero Tropffackel]]></de>
+        <fr><![CDATA[Nero Driptorch]]></fr>
+        <pt><![CDATA[Nero Pingafogo]]></pt>
+    </title>
+
+    <description>
+        <en>
+<![CDATA[A handheld driptorch that burns down live trees, dead trees and stumps. This is a 'quality of life' improvement mod.
+- Price: 350 $
+- Category: chainsaws
+]]>
+        </en>
+        <de>
+<![CDATA[Ein handgeführter Tropfbrenner zum Abbrennen von lebenden Bäumen, abgestorbenen Bäumen und Baumstümpfen. Dies ist eine Mod zur 'Verbesserung des Spielkomforts'.
+- Preis: 350 €
+- Kategorie: Kettensägen
+]]>
+        </de>
+        <fr>
+<![CDATA[Une torche à gouttes portative capable de brûler les arbres sur pied, les arbres morts et les souches. Il s'agit d'un mod visant à 'améliorer le confort de jeu'.
+- Prix : 350 €
+- Catégorie : chainsaws
+]]>
+        </fr>
+        <pt>
+<![CDATA[Um pingafogo portátil capaz de queimar árvores vivas, árvores mortas e tocos. Este é um mod de melhoria de 'qualidade de vida'.
+- Preço: 350 $
+- Categoria: chainsaws
+]]>
+        </pt>
+    </description>
+
+    <iconFilename>icon_driptorch.dds</iconFilename>
+
+    <multiplayer supported="true" />
+
+    <!-- Item comprável na loja, baseado no XML do implemento -->
+    <storeItems>
+        <storeItem xmlFilename="xml/driptorch.xml" />
+    </storeItems>
+
+    <!-- Script Lua da nossa especialização customizada -->
+    <extraSourceFiles>
+        <sourceFile filename="scripts/DriptorchTool.lua" />
+    </extraSourceFiles>
+
+    <handToolSpecializations>
+        <specialization name="driptorchTool"
+                         filename="scripts/DriptorchTool.lua"
+                         className="DriptorchTool" />
+    </handToolSpecializations>
+
+    <handToolTypes>
+        <type name="driptorchType" className="HandTool" filename="$dataS/scripts/handTools/HandTool.lua" parent="base">
+            <specialization name="driptorchTool" />
+        </type>
+    </handToolTypes>
+
+    <l10n>
+        <text name="typeDesc_driptorch">
+            <en><![CDATA[Nero Driptorch]]></en>
+            <de><![CDATA[Nero Tropffackel]]></de>
+            <fr><![CDATA[Nero Driptorch]]></fr>
+            <pt><![CDATA[Pingafogo Nero]]></pt>
+        </text>
+        <text name="function_driptorch">
+            <en><![CDATA[Nero Driptorch]]></en>
+            <de><![CDATA[Nero Tropffackel]]></de>
+            <fr><![CDATA[Nero Driptorch]]></fr>
+            <pt><![CDATA[Pingafogo Nero]]></pt>
+        </text>
+        <text name="action_driptorchBurn">
+            <en><![CDATA[Burn]]></en>
+            <de><![CDATA[Brennen]]></de>
+            <fr><![CDATA[Enflammer]]></fr>
+            <pt><![CDATA[Queimar]]></pt>
+        </text>
+    </l10n>
+
+</modDesc>

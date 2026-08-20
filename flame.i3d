@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<i3D name="flame" version="1.6" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://i3d.giants.ch/schema/i3d-1.6.xsd">
+  <Asset>
+    <Export program="i3dConverter" version="1.0"/>
+  </Asset>
+
+  <Files>
+    <File fileId="1" filename="flame.dds"/>
+    <File fileId="2" filename="$data/shaders/treeBillboardShader.xml"/>
+  </Files>
+
+
+  <Materials>
+    <Material name="flame_mat" materialId="1" customShaderId="2" customShaderVariation="billboard180">
+      <Texture fileId="1"/>
+    </Material>
+  </Materials>
+
+
+  <Shapes externalShapesFile="flame.i3d.shapes">
+  </Shapes>
+
+  <Scene>
+    <TransformGroup name="Empty" translation="0 1 0" clipDistance="50" nodeId="11">
+      <Shape name="Plane.000" shapeId="1" clipDistance="50" nodeId="12" castsShadows="true" receiveShadows="false" materialIds="1"/>
+      <Shape name="Plane.001" shapeId="2" clipDistance="50" nodeId="13" castsShadows="true" receiveShadows="false" materialIds="1"/>
+      <Shape name="Plane.002" shapeId="3" clipDistance="50" nodeId="14" castsShadows="true" receiveShadows="false" materialIds="1"/>
+      <Shape name="Plane.003" shapeId="4" clipDistance="50" nodeId="15" castsShadows="true" receiveShadows="false" materialIds="1"/>
+      <Shape name="Plane.004" shapeId="5" clipDistance="50" nodeId="16" castsShadows="true" receiveShadows="false" materialIds="1"/>
+      <Shape name="Plane.005" shapeId="6" clipDistance="50" nodeId="17" castsShadows="true" receiveShadows="false" materialIds="1"/>
+      <Shape name="Plane.006" shapeId="7" clipDistance="50" nodeId="18" castsShadows="true" receiveShadows="false" materialIds="1"/>
+      <Shape name="Plane.007" shapeId="8" clipDistance="50" nodeId="19" castsShadows="true" receiveShadows="false" materialIds="1"/>
+    </TransformGroup>
+  </Scene>
+
+</i3D>
