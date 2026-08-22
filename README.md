@@ -3,10 +3,10 @@
 Tired of the hussle of cutting trees, dragging trees and grinding stumps just to clear the fields?
 Annoyed with those ugly and worthless 'ravaged trees' that just add work without any due compen$ation?
 I was.
-So, getting inspired by a Roman Emperor from yonder I devised a method to eliminate undesirable things.
+So, getting inspired by a Roman Emperor from yonder, I devised a method to eliminate undesirable things.
 Behold the Nero Driptorch.
 Get your Nero, find a tree you want gone, drip some ignited fuel and watch it blaze from root to treetop.
-Caution: Nero will burn any standing tree, or any stump, within or without your lands. (I could've avoid it, couldn't I? Nero wouldn't.)
+Caution: Nero will burn any standing tree, or any stump, within or without your lands. (I could've avoided it, couldn't I? Nero wouldn't.)
 
 **Known issues:** if a tree was planted using the landscape tool, in building mode, a distant 'ghost tree image' will be visible after the burn due to the game's redrawing schedule for such objects.
 After a while or after reloading the game, though, those 'ghost trees' will be gone.
